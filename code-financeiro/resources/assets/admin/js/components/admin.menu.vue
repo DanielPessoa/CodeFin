@@ -1,6 +1,6 @@
 <template>
 <ul :id="o.id"class="dropdown-content" v-for="o in config.menusDropdown">
-    <li v-for="item in o.items">
+    <li v-for="item in o.items" :class="{'active': item.active}">
         <a :href="{name: item.url}">{{ item.name }}</a>
     </li>
 </ul>
@@ -21,14 +21,14 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
-                    <li  v-for="o in config.menus">
-                        <a v-if="o.dropdownId" class="dropdown-button" href="!#" :data-activates="o.dropdownId">
+                    <li v-for="o in config.menus" :class="{'active': o.active}">
+                        <a v-if="o.dropdownId" class="dropdown-button" href="#!" :data-activates="o.dropdownId">
                             {{ o.name }} <i class="material-icons right">arrow_drop_down</i>
                         </a>
                         <a v-else :href="{name: o.url}">{{ o.name }}</a>
                     </li>
                     <li>
-                        <a class="dropdown-button" href="!#" data-activates="dropdown-logout">
+                        <a class="dropdown-button" href="#!" data-activates="dropdown-logout">
                             {{ config.name }} <i class="material-icons right">arrow_drop_down</i>
                         </a>
                     </li>
@@ -59,8 +59,9 @@ export default {
       }
     },
     ready(){
-      $('.button-collapse').sideNav();
-      $('.dropdown-button').dropdown();
+      $('.button-collapse').sideNav()
+      $('.dropdown-button').dropdown()
+
     },
     methods:{
         goToLogout(){

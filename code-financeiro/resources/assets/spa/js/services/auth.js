@@ -1,47 +1,56 @@
-import {Jwt} from './resources';
+import JwtToken from './jwt-token';
 import LocalStorage from  './localStorage';
 import {User} from '../services/resources';
 
-const TOKEN = 'token';
 const USER = 'user';
 
-const afterLogin = (response) => {
+const afterLogin = function(response) {
+    this.user.check = true;
     User.get()
-        .then((response) => LocalStorage.setObject(USER, response.data));
+        .then((response) => {
+            this.user.data = response.data
+        });
 };
 
 export default {
+    user:{
+        set data(value){
+            if(!value){
+                LocalStorage.remove(USER);
+                this._data = null;
+                return;
+            }
+            this._data = value;
+            LocalStorage.setObject(User, value);
+        },
+        get data(){
+            if(!this._data){
+                this._data = LocalStorage.getObject(User);
+            }
+            return this._data;
+        },
+
+        check: JwtToken.token ? true : false
+    },
     login(email, password){
-       return Jwt.accessToken(email, password).then((response) => {
-           LocalStorage.set(TOKEN, response.data.token);
-           afterLogin(response);
+       return JwtToken.accessToken(email, password).then((response) => {
+           let afterLoginContext = afterLogin.bind(this);
+           afterLoginContext(response);
             return response;
         });
     },
     logout(){
         let afterLogout = () => {
-            LocalStorage.remove(TOKEN);
-            LocalStorage.remove(USER);
-        }
+            this.clearAuth();
+        };
 
-        return Jwt.Logout()
+        return JwtToken.revokeToken()
                     .then(afterLogout())
                     .catch(afterLogout());
 
     },
-    refresh_token(){
-      return Jwt.refreshToken().then((response) => {
-          LocalStorage.set(TOKEN, response.data.token);
-          return response;
-      });
-    },
-    getAuthorizationHeader(){
-        return `Bearer ${LocalStorage.get(TOKEN)}`;
-    },
-    user(){
-      return LocalStorage.getObject(USER);
-    },
-    check(){
-      return LocalStorage.get(TOKEN) ? true : false;
+    clearAuth(){
+        this.user.data = null;
+        this.user.check = false;
     },
 }
