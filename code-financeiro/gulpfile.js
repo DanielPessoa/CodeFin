@@ -5,6 +5,11 @@ const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('./webpack.config');
 const webpackDevConfig = require ('./webpack.dev.config');
 const mergeWebpack = require('webpack-merge');
+const env = require('gulp-env');
+const stringifyObject = require('stringify-object');
+const file = require('gulp-file');
+const HOST = "127.0.0.1";
+
 
 
 // require('laravel-elixir-vue');
@@ -26,18 +31,30 @@ const mergeWebpack = require('webpack-merge');
  |
  */
 
+gulp.task('spa-config', () => {
+    env({
+        file: '.env',
+        type: 'ini',
+
+    });
+    let spaConfig = require('./spa.config');
+    let string = stringifyObject(spaConfig);
+    return file('config.js', `module.export = ${string};`, {src: true})
+        .pipe(gulp.dest('./resources/assets/spa/js'));
+});
+
 gulp.task('webpack-dev-server', () => {
     let config = mergeWebpack(webpackConfig, webpackDevConfig);
     let inlineHot = [
         'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://127.0.0.1:8080'
+        `webpack-dev-server/client?http://${HOST}:8080`
     ];
     config.entry.admin = [config.entry.admin].concat(inlineHot);
     config.entry.spa = [config.entry.spa].concat(inlineHot);
     new WebpackDevServer(webpack(config), {
         hot: true,
         proxy:{
-          '*': 'http://127.0.0.1:8000'
+          '*': `http://${HOST}:8000`
         },
         watchOptions:{
             poll: true,
@@ -57,10 +74,10 @@ elixir(mix => {
         .sass('./resources/assets/spa/sass/spa.scss')
         .copy('./node_modules/materialize-css/fonts/roboto', './public/fonts/roboto');
 
-    gulp.start('webpack-dev-server');
+    gulp.start('spa-config','webpack-dev-server');
 
     mix.browserSync({
         host: '0.0.0.0',
-        proxy: 'http://127.0.0.1:8080'
+        proxy: `http://${HOST}:8080`
     });
 });
