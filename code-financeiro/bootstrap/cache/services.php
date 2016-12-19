@@ -24,10 +24,14 @@
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
-    23 => 'CodeFin\\Providers\\AppServiceProvider',
-    24 => 'CodeFin\\Providers\\AuthServiceProvider',
-    25 => 'CodeFin\\Providers\\EventServiceProvider',
-    26 => 'CodeFin\\Providers\\RouteServiceProvider',
+    23 => 'Barryvdh\\Cors\\ServiceProvider',
+    24 => 'Prettus\\Repository\\Providers\\RepositoryServiceProvider',
+    25 => 'Collective\\Html\\HtmlServiceProvider',
+    26 => 'CodeFin\\Providers\\AppServiceProvider',
+    27 => 'CodeFin\\Providers\\AuthServiceProvider',
+    28 => 'CodeFin\\Providers\\EventServiceProvider',
+    29 => 'CodeFin\\Providers\\RouteServiceProvider',
+    30 => 'CodeFin\\Providers\\RepositoryServiceProvider',
   ),
   'eager' => 
   array (
@@ -42,10 +46,13 @@
     8 => 'Illuminate\\Session\\SessionServiceProvider',
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
-    11 => 'CodeFin\\Providers\\AppServiceProvider',
-    12 => 'CodeFin\\Providers\\AuthServiceProvider',
-    13 => 'CodeFin\\Providers\\EventServiceProvider',
-    14 => 'CodeFin\\Providers\\RouteServiceProvider',
+    11 => 'Barryvdh\\Cors\\ServiceProvider',
+    12 => 'Prettus\\Repository\\Providers\\RepositoryServiceProvider',
+    13 => 'CodeFin\\Providers\\AppServiceProvider',
+    14 => 'CodeFin\\Providers\\AuthServiceProvider',
+    15 => 'CodeFin\\Providers\\EventServiceProvider',
+    16 => 'CodeFin\\Providers\\RouteServiceProvider',
+    17 => 'CodeFin\\Providers\\RepositoryServiceProvider',
   ),
   'deferred' => 
   array (
@@ -136,6 +143,10 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -173,6 +184,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),
