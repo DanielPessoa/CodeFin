@@ -39,7 +39,7 @@ gulp.task('spa-config', () => {
     });
     let spaConfig = require('./spa.config');
     let string = stringifyObject(spaConfig);
-    return file('config.js', `module.export = ${string};`, {src: true})
+    return file('config.js', `module.exports = ${string};`, {src: true})
         .pipe(gulp.dest('./resources/assets/spa/js'));
 });
 

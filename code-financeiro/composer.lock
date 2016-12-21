@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0432ebfb9310fcef8f6a87969115fc14",
-    "content-hash": "c25b290f2136cd96f37b1efe65098429",
+    "hash": "2f1b2f890613bc85b65a6ce242ac7ee8",
+    "content-hash": "269dc4e4874147c4d6c8207e4fbc710a",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -361,16 +361,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.26",
+            "version": "v5.3.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "609bcffd2ce2006925f8304e022288b3da5d23a4"
+                "reference": "9bee167d173857c25966c19afdaa66f127ca6784"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/609bcffd2ce2006925f8304e022288b3da5d23a4",
-                "reference": "609bcffd2ce2006925f8304e022288b3da5d23a4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/9bee167d173857c25966c19afdaa66f127ca6784",
+                "reference": "9bee167d173857c25966c19afdaa66f127ca6784",
                 "shasum": ""
             },
             "require": {
@@ -452,7 +452,7 @@
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (3.1.*).",
                 "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (3.1.*).",
-                "symfony/psr-http-message-bridge": "Required to use psr7 bridging features (0.2.*)."
+                "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
             },
             "type": "library",
             "extra": {
@@ -485,7 +485,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-11-30 14:58:38"
+            "time": "2016-10-08 01:51:20"
         },
         {
             "name": "laravelcollective/html",
