@@ -23,11 +23,10 @@
 <body>
 <div id="app">
 <header>
-
         @if (Auth::check())
             <?php $menuConfig = [
-                    'name'           => Auth::user()->name,
-                    'menus'          => [
+                    'name'  => Auth::user()->name,
+                    'menus' => [
                             [
                                     'name'   => 'Banco',
                                     'url'    => route('admin.banks.index'),
@@ -35,7 +34,7 @@
                             ],
                         ['name' => 'Contas a pagar', 'dropdownId' => 'teste']
                     ],
-                    'menusDropdown  '=> [
+                    'menusDropdown' => [
                             'id' => 'teste',
                             'items' => [
                                     'name'   => 'Banco Edit',

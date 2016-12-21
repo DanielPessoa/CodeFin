@@ -1,7 +1,7 @@
 <template>
 <ul :id="o.id"class="dropdown-content" v-for="o in config.menusDropdown">
     <li v-for="item in o.items" :class="{'active': item.active}">
-        <a :href="{name: item.url}">{{ item.name }}</a>
+        <a :href="name: item.url">{{ item.name }}</a>
     </li>
 </ul>
     <ul id="dropdown-logout" class="dropdown-content">
@@ -25,7 +25,8 @@
                         <a v-if="o.dropdownId" class="dropdown-button" href="#!" :data-activates="o.dropdownId">
                             {{ o.name }} <i class="material-icons right">arrow_drop_down</i>
                         </a>
-                        <a v-else :href="{name: o.url}">{{ o.name }}</a>
+                        <!--<a v-else :href="name: o.url">{{ o.name }}</a>-->
+                        <a v-else href="/admin/banks">{{ o.name }}</a>
                     </li>
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown-logout">
@@ -36,7 +37,7 @@
             </div>
             <ul id="nav-mobile" class="side-nav">
                 <li  v-for="o in config.menus">
-                    <a :href="{name: o.url}">{{ o.name }}</a>
+                    <a :href="config.urlBankList">{{ o.name }}</a>
                 </li>
             </ul>
         </div>
@@ -53,7 +54,7 @@ export default {
                   name: '',
                   menus: [],
                   menusDropdown: [],
-                  urlLogout: '/admin/logout'
+                  urlLogout: '/admin/logout',
               }
           }
       }
