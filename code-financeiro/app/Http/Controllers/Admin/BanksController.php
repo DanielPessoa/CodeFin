@@ -2,9 +2,11 @@
 
 namespace CodeFin\Http\Controllers\Admin;
 
+use CodeFin\Events\BankCreatedEvent;
 use CodeFin\Http\Controllers\Controller;
 use CodeFin\Http\Controllers\Response;
 
+use CodeFin\Models\Bank;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use CodeFin\Http\Requests\BankCreateRequest;
@@ -61,7 +63,6 @@ class BanksController extends Controller
     public function store(BankCreateRequest $request)
     {
            $data = $request->all();
-           $data['logo'] = md5(time()).'.jpeg';
            $this->repository->create($data);
 
 //            if($request->wantsJson()) {
@@ -127,7 +128,6 @@ class BanksController extends Controller
      */
     public function update(BankUpdateRequest $request, $id)
     {
-
             $this->repository->update($request->all(), $id);
 
 //            if ($request->wantsJson()) {
@@ -152,16 +152,6 @@ class BanksController extends Controller
      */
     public function destroy($id)
     {
-        $this->repository->delete($id);
 
-//        if (request()->wantsJson()) {
-//
-//            return response()->json([
-//                'message' => 'Bank deleted.',
-//                'deleted' => $deleted,
-//            ]);
-//        }
-
-        return redirect()->route('admin.banks.index');
     }
 }

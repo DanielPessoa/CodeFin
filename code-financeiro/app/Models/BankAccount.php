@@ -6,17 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Bank extends Model implements Transformable
+class BankAccount extends Model implements Transformable
 {
     use TransformableTrait;
 
     protected $fillable = [
         'name',
-        'logo'
+        'agency',
+        'account',
+        'bank_id'
     ];
 
-    public static function logosDir(){
-        return 'banks/images';
+    public function bank(){
+        return $this->belongsTo(Bank::class);
     }
 
 }
