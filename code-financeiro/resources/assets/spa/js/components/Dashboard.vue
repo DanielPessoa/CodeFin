@@ -22,7 +22,6 @@
                console.log(response.data);
             });
 
-           // console.log(Auth.user());
         }
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <ul :id="o.id" class="dropdown-content" v-for="o in config.menusDropdown">
         <li v-for="item in o.items" :class="menuItemClass(item)">
-            <a :href="name: item.url">{{ item.name }}</a>
+            <a :href="item.url">{{ item.name }}</a>
         </li>
     </ul>
     <ul id="dropdown-logout" class="dropdown-content">

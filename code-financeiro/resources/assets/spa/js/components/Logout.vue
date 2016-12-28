@@ -1,12 +1,11 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col s8 offset-s2 z-depth-2">
+            <div class="col s8 offset-s2 z-depth-2 card-panel">
                 <h5 class="center">Efetuando logout...</h5>
-                    <div class="progress">
-                        <div class="indeterminate"></div>
-                    </div>
-
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -15,9 +14,9 @@
     import Auth from '../services/auth';
     export default{
         ready(){
-          setTimeout(() => {
-              this.logout();
-          }, 1000);
+            setTimeout(() => {
+                this.logout();
+            }, 1000);
         },
         methods: {
             logout(){

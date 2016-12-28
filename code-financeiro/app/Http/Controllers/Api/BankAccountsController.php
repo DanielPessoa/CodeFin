@@ -2,6 +2,8 @@
 
 namespace CodeFin\Http\Controllers\Api;
 
+use CodeFin\Criteria\FindByLikeAgencyCriteria;
+use CodeFin\Criteria\FindByNameCriteria;
 use CodeFin\Http\Controllers\Controller;
 use CodeFin\Http\Controllers\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -43,7 +45,9 @@ class BankAccountsController extends Controller
      */
     public function index()
     {
-        $bankAccounts = $this->repository->all();
+//        $this->repository->pushCriteria(new FindByNameCriteria(''))
+//            ->pushCriteria(new FindByLikeAgencyCriteria(''));
+        $bankAccounts = $this->repository->paginate();
 
             return $bankAccounts;
     }
@@ -70,13 +74,9 @@ class BankAccountsController extends Controller
      */
     public function show($id)
     {
-        try{
-            $bankAccount = $this->repository->find($id);
-        }catch (ModelNotFoundException $e){
-            return response()->json(['message' => 'Resource not found'], 404);
-        }
+        $bankAccount = $this->repository->find($id);
 
-        return response()->json($bankAccount->toArray());
+        return response()->json($bankAccount);
 
     }
 

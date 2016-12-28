@@ -33,17 +33,21 @@
                                     'active' => isRouteActive('admin.banks.edit')
                             ],
                         ['name' => 'Contas a pagar', 'dropdownId' => 'teste'],
-                        ['name' => 'Contas a Receber', 'dropdownId' => 'receive-pay']
                     ],
-                    'menusDropdown' => [
-                            'id' => 'teste',
-                            'items' => [
-                                    'name'   => 'Banco Edit',
-                                    'url'    => route('admin.banks.index'),
-                                    'active' => isRouteActive('admin.banks.edit')
-                            ],
-                    ],
-                    'urlLogout' => env('URL_ADMIN_LOGOUT'),
+                'menusDropdown' => [
+                        [
+                                'id' => 'teste',
+                                'items' => [
+                                        [
+                                                'name' => 'Banco List',
+                                                'url' => route('admin.banks.index'),
+                                                'active' => isRouteActive('admin.banks.edit')
+                                        ],
+
+                                ],
+                        ]
+                ],
+                'urlLogout' => env('URL_ADMIN_LOGOUT'),
                     'csrfToken' => csrf_token()
             ];
             ?>
