@@ -39,7 +39,7 @@
                         :total-records="pagination.total"></pagination>
             </div>
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large green lighten-1" href="">
+                <a class="btn-floating btn-large green lighten-1" v-link="{name: 'bank-account.create'}">
                     <i class="large material-icons">add</i>
                 </a>
             </div>

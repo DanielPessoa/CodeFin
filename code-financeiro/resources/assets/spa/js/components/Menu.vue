@@ -1,7 +1,7 @@
 <template>
     <ul :id="o.id" class="dropdown-content" v-for="o in menusDropdown">
         <li v-for="item in o.items">
-            <a v-link="{name: item.routeName}">{{ item.name }}</a>
+            <a :href="item.routeName">{{ item.name }}</a>
         </li>
     </ul>
     <ul id="dropdrown-logout" class="dropdown-content">
@@ -19,13 +19,13 @@
                     </a>
                     <ul class="right hide-on-med-and-down">
                         <li v-for="o in menus">
-                            <a v-if="o.dropdownId" class="dropdown-button" href="!#" :data-activates="o.dropdownId">
+                            <a v-if="o.dropdownId" class="dropdown-button" href="#!" :data-activates="o.dropdownId">
                                 {{ o.name }} <i class="material-icons right">arrow_drop_down</i>
                             </a>
-                            <a v-else v-link="{name: o.url}">{{ o.name }}</a>
+                            <a v-else v-link="{name: 'bank-account.list'}">{{ o.name }}</a>
                         </li>
                         <li>
-                            <a class="dropdown-button" href="!#" data-activates="dropdrown-logout">
+                            <a class="dropdown-button" href="#!" data-activates="dropdrown-logout">
                                 {{ name }}<i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
@@ -44,11 +44,12 @@
     import Auth from '../services/auth';
     export default{
         data(){
-            return{
+            return {
                 menus: [
                     {name: 'Conta bancária', routeName: 'bank-account.list'},
                 ],
-                menusDropdown: [],
+                menusDropdown: [
+                ],
                 user: Auth.user
             }
         },
