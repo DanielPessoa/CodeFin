@@ -32,7 +32,10 @@ class CreateBankAccountsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('bank_accounts');
+		Schema::drop('bank_accounts', function (Blueprint $table){
+            $table->dropForeign('bank_accounts_client_id_foreign');
+            $table->dropColumn('client_id');
+        });
 	}
 
 }

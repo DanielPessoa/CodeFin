@@ -11,21 +11,43 @@ class BankAccountsTableSeeder extends Seeder
      */
     public function run()
     {
-        $repository = app(\CodeFin\Repositories\BankRepository::class);
-        $banks = $repository->all();
-        $max = 15;
+        $banks = $this->getBanks();
+        $clients = $this->getClients();
+        $max = 50;
         $bankAccountId = rand(1, $max);
         factory(\CodeFin\Models\BankAccount::class, $max)
             ->make()
-            ->each(function ($bankAccount) use($banks, $bankAccountId){
+            ->each(function ($bankAccount) use ($banks, $bankAccountId, $clients) {
                 $bank = $banks->random();
+                $client = $clients->random();
+
                 $bankAccount->bank_id = $bank->id;
+                $bankAccount->client_id = $client->id;
+
                 $bankAccount->save();
 
-                if($bankAccountId == $bankAccount->id){
+                if ($bankAccountId == $bankAccount->id) {
                     $bankAccount->default = 1;
+                    $bankAccount->save();
                 }
-                $bankAccount->save();
+
             });
+    }
+
+
+    private function getBanks()
+    {
+        /** @var CodeFin\Repositories\BankRepository $repository */
+        $repository = app(\CodeFin\Repositories\BankRepository::class);
+        $repository->skipPresenter(true);
+        return $repository->all();
+    }
+
+    private function getClients()
+    {
+        /** @var CodeFin\Repositories\ClientRepository $repository */
+        $repository = app(\CodeFin\Repositories\ClientRepository::class);
+        $repository->skipPresenter(true);
+        return $repository->all();
     }
 }

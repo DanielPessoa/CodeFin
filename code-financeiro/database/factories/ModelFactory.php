@@ -37,3 +37,9 @@ $factory->define(\CodeFin\Models\BankAccount::class, function (Faker\Generator $
 
     ];
 });
+$factory->define(\CodeFin\Models\Client::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->name
+    ];
+});
