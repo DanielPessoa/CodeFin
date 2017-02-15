@@ -13,7 +13,7 @@
         <nav>
             <div class="nav-wrapper">
                 <div class="col s12">
-                    <a href="#" class="left brand-logo">Conde Financeiro</a>
+                    <a href="#" class="left brand-logo">Code Financeiro</a>
                     <a href="#" data-activates="nav-mobile" class="button-collapse">
                         <i class="material-icons">menu</i>
                     </a>
@@ -22,7 +22,7 @@
                             <a v-if="o.dropdownId" class="dropdown-button" href="#!" :data-activates="o.dropdownId">
                                 {{ o.name }} <i class="material-icons right">arrow_drop_down</i>
                             </a>
-                            <a v-else v-link="{name: 'bank-account.list'}">{{ o.name }}</a>
+                            <a v-else v-link="{name: o.routeName}">{{ o.name }}</a>
                         </li>
                         <li>
                             <a class="dropdown-button" href="#!" data-activates="dropdrown-logout">
@@ -47,6 +47,7 @@
             return {
                 menus: [
                     {name: 'Conta bancária', routeName: 'bank-account.list'},
+                    {name: 'Categoria', routeName: 'category.list'},
                 ],
                 menusDropdown: [
                 ],

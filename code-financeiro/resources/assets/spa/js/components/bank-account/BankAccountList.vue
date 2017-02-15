@@ -127,9 +127,9 @@
                             width: '10%'
                         },
                         'banks:bank_id|banks.name': {
-                          label: 'Banco', width: '15%'
+                            label: 'Banco', width: '15%'
                         },
-                        'default':{
+                        'default': {
                             label: 'Padrão', width: '10%'
                         }
                     }
@@ -159,7 +159,8 @@
                     page: this.pagination.current_page + 1,
                     orderBy: this.order.key,
                     sortedBy: this.order.sort,
-                    search: this.search
+                    search: this.search,
+                    include: 'bank'
                 }).then((response) => {
                     this.bankAccounts = response.data.data;
                     let pagination = response.data.meta.pagination;

@@ -30,6 +30,7 @@
                 BankAccount.save({}, this.bankAccount).then(() => {
                     Materialize.toast('Conta Bancária Criada com Sucesso!', 4000);
                     this.$route.go({name: 'bank-account.list'})
+
                 })
             },
             getBanks(){

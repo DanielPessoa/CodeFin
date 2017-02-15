@@ -4,7 +4,7 @@ import DashBoardComponent from './components/Dashboard.vue';
 import BankAccountListComponent from './components/bank-account/BankAccountList.vue';
 import BankAccountCreateComponent from './components/bank-account/BankAccountCreate.vue';
 import BankAccountUpdateComponent from './components/bank-account/BankAccountUpdate.vue';
-
+import CategoryListComponent from './components/category/CategoryList.vue';
 
 export default {
     '/login': {
@@ -27,17 +27,25 @@ export default {
         subRoutes: {
             '/': {
                 name: 'bank-account.list',
-                component: BankAccountListComponent
+                component: BankAccountListComponent,
+                auth: true
             },
             '/create': {
                 name: 'bank-account.create',
-                component: BankAccountCreateComponent
+                component: BankAccountCreateComponent,
+                auth: true
             },
             '/:id/update':{
                 name:'bank-account.update',
-                component: BankAccountUpdateComponent
+                component: BankAccountUpdateComponent,
+                auth: true
             }
         }
     },
+    '/categories':{
+        name: 'category.list',
+        component: CategoryListComponent,
+        auth: true
+    }
 
 }

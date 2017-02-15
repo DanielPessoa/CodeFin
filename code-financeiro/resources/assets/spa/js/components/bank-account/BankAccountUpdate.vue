@@ -2,6 +2,8 @@
 <script type="text/javascript">
     import {BankAccount, Bank} from '../../services/resources';
     import PageTitleComponent from '../PageTitle.vue';
+    import 'materialize-autocomplete';
+    import _ from 'lodash';
     export default{
         components: {
             'page-title': PageTitleComponent
@@ -14,6 +16,9 @@
                     agency: '',
                     account: '',
                     'default': false,
+                },
+                bank: {
+                    name: '',
                 },
                 banks: []
             };
@@ -37,8 +42,12 @@
                 });
             },
             getBankAccount(id){
-              BankAccount.get({id: id}).then((response) => {
+              BankAccount.get({
+                  id: id,
+                  include: 'bank'
+              }).then((response) => {
                   this.bankAccount = response.data.data;
+                  this.bank = response.data.data.bank.data;
               })
             },
             initAutoComplete(){

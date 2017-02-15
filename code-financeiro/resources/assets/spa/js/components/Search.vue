@@ -1,6 +1,6 @@
 <template>
     <div class="col s8">
-        <form name="form" method="GET" @submit="submit()">
+        <form name="form" method="GET" @submit.prevent="submit()">
             <div class="filter-group">
                 <button class="btn waves-effect" type="submit">
                     <i class="material-icons">search</i>
