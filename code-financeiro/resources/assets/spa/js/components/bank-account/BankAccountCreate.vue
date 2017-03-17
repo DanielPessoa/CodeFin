@@ -1,9 +1,9 @@
 <template src="./_form.html"></template>
 <script type="text/javascript">
-    import {BankAccount, Bank} from '../../services/resources';
     import PageTitleComponent from '../PageTitle.vue';
     import 'materialize-autocomplete';
     import _ from 'lodash';
+    import store from '../../store/store';
 
     export default{
         components: {
@@ -19,23 +19,28 @@
                     bank_id: '',
                     'default': false,
                 },
-                banks: []
+                bank: {
+                    name: ""
+                },
             };
+        },
+        computed: {
+            banks(){
+                return store.state.bank.banks;
+            }
         },
         created(){
             this.getBanks();
         },
         methods: {
             submit(){
-                BankAccount.save({}, this.bankAccount).then(() => {
+                store.dispatch('bankAccount/save', this.bankAccount).then(() => {
                     Materialize.toast('Conta Bancária Criada com Sucesso!', 4000);
-                    this.$route.go({name: 'bank-account.list'})
-
-                })
+                    this.$router.go({name: 'bank-account.list'})
+                });
             },
             getBanks(){
-                Bank.query().then((response) => {
-                    this.banks = response.data.data;
+                store.dispatch('bank/query').then((response) => {
                     this.initAutoComplete();
                 });
             },
@@ -54,8 +59,8 @@
                             let banks = self.filterBankByName(value);
                             banks = banks.map((o) => {
                                 return {id: o.id, text: o.name};
-                            })
-                            callback(value,banks);
+                            });
+                            callback(value, banks);
                         },
                         onSelect(item){
                             self.bankAccount.bank_id = item.id;
@@ -65,7 +70,7 @@
             },
             filterBankByName(name){
                 let banks = _.filter(this.banks, (o) => {
-                   return _.includes(o.name.toLowerCase(), name.toLowerCase());
+                    return _.includes(o.name.toLowerCase(), name.toLowerCase());
                 });
                 return banks;
             }

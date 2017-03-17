@@ -41,22 +41,20 @@
     </div>
 </template>
 <script type="text/javascript">
-    import Auth from '../services/auth';
+    import store from '../store/store';
     export default{
         data(){
             return {
                 menus: [
                     {name: 'Conta bancária', routeName: 'bank-account.list'},
-                    {name: 'Categoria', routeName: 'category.list'},
+                    {name: 'Plano de Contas', routeName: 'category.list'},
                 ],
-                menusDropdown: [
-                ],
-                user: Auth.user
+                menusDropdown: [],
             }
         },
         computed: {
             name(){
-                return this.user.data ? this.user.data.name : '';
+                return store.state.auth.user.name;
             }
         },
         ready(){

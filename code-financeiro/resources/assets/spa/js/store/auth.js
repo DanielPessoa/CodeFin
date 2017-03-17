@@ -1,0 +1,65 @@
+import JwtToken from '../services/jwt-token';
+import LocalStorage from  '../services/localStorage';
+import {User} from '../services/resources';
+
+const USER = 'user';
+
+const state = {
+    user: LocalStorage.getObject(User) || {name: ''},
+    check: JwtToken.token != null
+};
+
+const mutations = {
+    setUser(state, user){
+        state.user = user;
+        if(user !== null){
+            LocalStorage.setObject(User, user);
+        }else
+        {
+            LocalStorage.remove(User);
+        }
+
+    },
+    authenticated(state){
+        state.check = true;
+    },
+    unauthenticated(state){
+        state.check = false;
+    }
+};
+
+const actions = {
+    login(context,{email, password}){
+        return JwtToken.accessToken(email, password).then((response) => {
+            context.commit('authenticated');
+            context.dispatch('getUser');
+            return response;
+        });
+    },
+    getUser(context){
+        return User.get().then((response) => {
+            context.commit('setUser', response.data);
+        });
+
+    },
+    clearAuth(context){
+        context.commit('unauthenticated');
+        context.commit('setUser', null);
+    },
+    logout(context){
+        let afterLogout = (response) => {
+            context.dispatch('clearAuth');
+            this.clearAuth();
+            return response;
+        };
+        return JwtToken.revokeToken()
+            .then(afterLogout)
+            .catch(afterLogout);
+    }
+};
+
+const module = {
+    state, mutations, actions
+};
+export default module;
+

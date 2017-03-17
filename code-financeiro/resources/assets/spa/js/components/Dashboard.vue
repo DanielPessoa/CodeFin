@@ -14,14 +14,6 @@
 </template>
 
 <script>
-    import Auth from '../services/auth';
-    import {User} from '../services/resources';
-    export default {
-        ready(){
-            User.get().then((response) => {
-               console.log(response.data);
-            });
-
-        }
-    }
+    import store from '../store/store';
+    export default {}
 </script>
