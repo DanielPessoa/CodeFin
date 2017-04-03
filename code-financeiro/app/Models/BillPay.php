@@ -13,7 +13,7 @@ class BillPay extends Model implements Transformable
     use BelongsToTenants;
 
     protected $fillable = [
-        'data_due',
+        'date_due',
         'name',
         'value',
         'done'

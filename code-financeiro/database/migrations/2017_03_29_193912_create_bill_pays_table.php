@@ -21,7 +21,7 @@ class CreateBillPaysTable extends Migration
            $table->boolean('done')->default(false);
            $table->integer('client_id')->unsigned();
            $table->foreign('client_id')->references('id')->on('clients');
-           $table->timestamp();
+           $table->timestamps();
         });
     }
 

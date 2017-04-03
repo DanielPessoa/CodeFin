@@ -5,7 +5,7 @@ namespace CodeFin\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface BillPaysRepository
+ * Interface BillPayRepository
  * @package namespace CodeFin\Repositories;
  */
 interface BillPayRepository extends RepositoryInterface, RepositoryInterface

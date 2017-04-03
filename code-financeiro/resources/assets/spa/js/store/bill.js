@@ -61,11 +61,45 @@ export default () => {
        'delete'(context){
            let id = context.state.billDelete.id;
            return context.state.resource.delete({id: id}).then((response) => {
-               context.commit('delete')
+               context.commit('delete');
+               context.commit('setDelete', null);
+
+               let bills = context.state.bills;
+               let pagination = context.state.searchOptions.pagination;
+               if(bills.length === 0 && pagination.current_page > 0){
+                   context.commit('setCurrentPage', pagination.current_page--);
+               }
+               return response;
+            });
+       },
+       save(context, bill){
+            return context.state.resource.save({}, bill).then((response) => {
+                context.dispatch('query');
+                return response;
+            })
+       },
+       edit(context, {index, bill}){
+           return context.state.resource.update({id: bill.id}, bill).then((response) => {
+               context.commit('update', {index, bill});
+               return response;
            });
        }
-   }
+   };
 
+   const getters = {
+       billByIndex: (state) => (index) => {
+           return state.bills[index];
+       }
+   };
 
+   const module = {
+       namespaced: true,
+       state,
+       mutations,
+       actions,
+       getters
+   };
+
+   return module;
 
 }

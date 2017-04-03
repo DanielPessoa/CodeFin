@@ -3,6 +3,7 @@
 namespace CodeFin\Repositories;
 
 use CodeFin\Models\BillPay;
+use CodeFin\Presenters\BillPaysPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -34,6 +35,6 @@ class BillPayRepositoryEloquent extends BaseRepository implements BillPayReposit
 
     public function presenter()
     {
-        return BillPayPresenter::class;
+        return BillPaysPresenter::class;
     }
 }

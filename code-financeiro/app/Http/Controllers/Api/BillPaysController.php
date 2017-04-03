@@ -5,7 +5,6 @@ namespace CodeFin\Http\Controllers\Api;
 use CodeFin\Http\Controllers\Controller;
 use CodeFin\Repositories\BillPaysRepository;
 use Illuminate\Http\Request;
-
 use CodeFin\Http\Requests;
 
 class BillPaysController extends Controller
@@ -25,7 +24,7 @@ class BillPaysController extends Controller
         return $billPays;
     }
 
-    public function store(BillPaysRequest $request)
+    public function store(BillPayRequest $request)
     {
         $billPay = $this->repository->create($request->all());
 
