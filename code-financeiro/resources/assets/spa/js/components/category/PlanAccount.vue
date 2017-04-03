@@ -34,8 +34,8 @@
 
 <script type="text/javascript">
     import PageTitleComponent from '../PageTitle.vue';
-    import CategoryRevenue from './CategoryRevenue';
-    import CategoryExpense from './CategoryExpense';
+    import CategoryRevenue from './CategoryRevenue.vue';
+    import CategoryExpense from './CategoryExpense.vue';
 
     export default {
         components: {

@@ -11,7 +11,8 @@
                 <button type="submit" class="btn btn-flat waves-effect green lighten-2 modal-close modal-action">
                     OK
                 </button>
-                <button type="button" class="btn btn-flat waves-effect waves-red modal-close modal-action">Cancelar</button>
+                <button type="button" class="btn btn-flat waves-effect waves-red modal-close modal-action">Cancelar
+                </button>
             </div>
         </category-save>
 
@@ -37,14 +38,13 @@
 </template>
 
 <script type="text/javascript">
-    import {CategoryService} from '../../services/category-nsm';
     import categoryMixin from '../../mixins/category-mixin';
 
     export default {
         mixins: [categoryMixin],
-        methods:{
-            resource(){
-                return new CategoryService('revenue');
+        methods: {
+            namespace(){
+                return 'categoryRevenue';
             }
         }
     }

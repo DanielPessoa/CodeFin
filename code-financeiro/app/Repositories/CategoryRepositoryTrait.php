@@ -2,9 +2,6 @@
 
 namespace CodeFin\Repositories;
 
-
-use Prettus\Repository\Eloquent\BaseRepository;
-
 trait CategoryRepositoryTrait
 {
     public function create(array $attributes)

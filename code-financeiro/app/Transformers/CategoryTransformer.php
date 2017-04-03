@@ -4,7 +4,7 @@ namespace CodeFin\Transformers;
 
 use CodeFin\Models\AbstractCategory;
 use League\Fractal\TransformerAbstract;
-use CodeFin\Models\Category;
+
 
 /**
  * Class CategoryTransformer

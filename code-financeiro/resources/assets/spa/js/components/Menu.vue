@@ -47,7 +47,7 @@
             return {
                 menus: [
                     {name: 'Conta bancária', routeName: 'bank-account.list'},
-                    {name: 'Plano de Contas', routeName: 'category.list'},
+                    {name: 'Plano de Contas', routeName: 'plan-account'},
                 ],
                 menusDropdown: [],
             }

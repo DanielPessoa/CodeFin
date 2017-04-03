@@ -37,7 +37,7 @@ class CategoryRevenuesTableSeeder extends Seeder
     }
     private function getCategoriesRoot()
     {
-        /** @var CodeFin\Repositories\CategoryRepository $repository */
+        /** @var CodeFin\Repositories\CategoryRevenueRepository $repository */
         $repository = app(\CodeFin\Repositories\CategoryRevenueRepository::class);
         $repository->skipPresenter(true);
         return $repository->all();

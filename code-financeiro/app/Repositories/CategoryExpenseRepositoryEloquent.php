@@ -2,11 +2,12 @@
 
 namespace CodeFin\Repositories;
 
+use CodeFin\Presenters\CategoryPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeFin\Repositories\CategoryExpenseRepository;
 use CodeFin\Models\CategoryExpense;
-use CodeFin\Validators\CategoryExpenseValidator;
+
 
 /**
  * Class CategoryExpenseRepositoryEloquent
@@ -30,5 +31,10 @@ class CategoryExpenseRepositoryEloquent extends BaseRepository implements Catego
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function presenter()
+    {
+        return CategoryPresenter::class;
     }
 }

@@ -15,7 +15,6 @@ abstract class AbstractCategory extends Model implements Transformable
     use NodeTrait;
 
     protected $fillable = ['name'];
-
     public static $enableTenant = true;
 
     public function newQuery()

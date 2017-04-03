@@ -2,21 +2,18 @@
 
 namespace CodeFin\Repositories;
 
-use CodeFin\Presenters\CategoryPresenter;
+use CodeFin\Models\BillPay;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use CodeFin\Repositories\CategoryRevenueRepository;
-use CodeFin\Models\CategoryRevenue;
+
+
 
 /**
- * Class CategoryRevenueRepositoryEloquent
+ * Class BillPaysRepositoryEloquent
  * @package namespace CodeFin\Repositories;
  */
-class CategoryRevenueRepositoryEloquent extends BaseRepository implements CategoryRevenueRepository
+class BillPayRepositoryEloquent extends BaseRepository implements BillPayRepository
 {
-
-    use CategoryRepositoryTrait;
-
     /**
      * Specify Model class name
      *
@@ -24,7 +21,7 @@ class CategoryRevenueRepositoryEloquent extends BaseRepository implements Catego
      */
     public function model()
     {
-        return CategoryRevenue::class;
+        return BillPay::class;
     }
 
     /**
@@ -37,6 +34,6 @@ class CategoryRevenueRepositoryEloquent extends BaseRepository implements Catego
 
     public function presenter()
     {
-        return CategoryPresenter::class;
+        return BillPayPresenter::class;
     }
 }
