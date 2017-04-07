@@ -3,7 +3,7 @@
         <category-tree :categories="categories"></category-tree>
 
         <category-save :modal-options="modalOptionsSave"
-                       :category-sync="categorySave"
+                       :category.sync="categorySave"
                        :cp-options="cpOptions"
                        @save-category="saveCategory">
             <span slot="title">{{title}}</span>

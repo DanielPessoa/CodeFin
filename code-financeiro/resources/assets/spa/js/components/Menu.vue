@@ -1,7 +1,7 @@
 <template>
     <ul :id="o.id" class="dropdown-content" v-for="o in menusDropdown">
         <li v-for="item in o.items">
-            <a :href="item.routeName">{{ item.name }}</a>
+            <a v-link="{name: item.routeName}">{{ item.name }}</a>
         </li>
     </ul>
     <ul id="dropdrown-logout" class="dropdown-content">
@@ -49,14 +49,12 @@
                     {name: 'Contas', dropdownId: 'bills-dropdown'},
                     {name: 'Conta bancária', routeName: 'bank-account.list'},
                     {name: 'Plano de Contas', routeName: 'plan-account'},
-                    {name: 'Conta a pagar', routeName: 'bill-pay.list'}
-                ],
+                    ],
                 menusDropdown: [
                     {
                         id: 'bills-dropdown',
                         items: [
                             {name: 'Conta a pagar', routeName: 'bill-pay.list'},
-                            {name: 'Conta a Receber', routeName: '#'},
                         ]
                     }
                 ],

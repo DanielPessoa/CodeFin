@@ -49,14 +49,8 @@ export default {
         auth: true
     },
     '/bill-pay': {
-        component: {template: "<router-view></router-view>"},
-        subRoutes: {
-            '/': {
                 name: 'bill-pay.list',
                 component: BillPayListComponent,
                 auth: true
             },
-        }
-    },
-
 }

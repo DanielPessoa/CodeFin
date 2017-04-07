@@ -3,7 +3,7 @@
 namespace CodeFin\Http\Controllers\Api;
 
 use CodeFin\Http\Controllers\Controller;
-use CodeFin\Repositories\BillPaysRepository;
+use CodeFin\Repositories\BillPayRepository;
 use Illuminate\Http\Request;
 use CodeFin\Http\Requests;
 
@@ -12,7 +12,7 @@ class BillPaysController extends Controller
     protected $repository;
 
 
-    public function __construct(BillPaysRepository $repository)
+    public function __construct(BillPayRepository $repository)
     {
         $this->repository = $repository;
     }
